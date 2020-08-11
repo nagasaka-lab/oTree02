@@ -53,7 +53,7 @@ class Constants(BaseConstants):
     # RESOURCE CAPACITIES ========================================================================= #
     #   Set the quota of players that each resource can carry. Fill in as many number as in the     #
     #   valuation vectors.                                                                          #
-    capacities = [2, 1, 2]
+    capacities = [1, 2, 2]
 
     # ============================================================================================================= #
     #                                                                                                               #

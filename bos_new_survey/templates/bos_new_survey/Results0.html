@@ -21,7 +21,7 @@
 {# ============================================================================================= #}
 {% block title %}
 
-    {% trans "希望調査（ボストン方式・意向調査無し）" %}
+    {% trans "割り当ての結果（ボストン方式・意向調査あり）" %}
 
 {% endblock %}
 
@@ -31,33 +31,26 @@
 {# ============================================================================================= #}
 {% block content %}
 
-{% if Constants.application_framing %}
 <p class="justify">
-    {% blocktrans trimmed %}
-    進学したい学校の希望順序（１～３）を記入してください。あなたの希望順序は他の参加者には知らされません。
-    {% endblocktrans %}
+  {% blocktrans trimmed %}
+  進学したい学校の意向（3つの学校の順序）を記入してください。
+  この意向調査の内容は実際の進学先の決定とは関係ありません。
+  意向の１位の集計結果は、みなさんに公表されます。記入する際には 1 〜 3 の異なる数字を入力してください。
+  {% endblocktrans %}
 </p>
 
-{% else %}
-<p class="justify">
-    {% blocktrans trimmed %}
-    進学したい学校の希望順序（１～３）を記入してください。あなたの希望順序は他の参加者には知らされません。
-    記入する際には１～{{ nr_courses}}の異なる数字を入力してください。
-    {% endblocktrans %}
-</p>
-{% endif %}
 
 <div>
     <table class="dec-table">
         <thead>
         <tr>
-            <th>{% trans "Index" %}</th>
+            <th>{% trans "学校" %}</th>
             {% for i in indices %}
             <td>
                 {% if Constants.application_framing %}
                 {% trans "S" %}
                 {% else %}
-                {% trans "R" %}
+                {% trans "S" %}
                 {% endif %}
                 <sub>{{ i }}</sub>
             </td>
@@ -97,7 +90,7 @@
         </tr>
         {% endif %}
         <tr>
-            <th>{% trans "あなたの希望" %}</th>
+            <th>{% trans "あなたの意向" %}</th>
             {% for i in form_fields %}
             <td><input class="pref-form" id="{{ i }}" type="number" name="{{ i }}" value="" maxlength="3">
             </td>
@@ -107,16 +100,54 @@
     </table>
 </div>
 
+{% if Constants.show_valuations and Constants.show_types and Constants.nr_types > 1 %}
+<p class="justify">
+    {% blocktrans trimmed %}
+        In addition, you know the valuations of the other Types:
+    {% endblocktrans %}
+</p>
+
+<div>
+    <table class="dec-table">
+        <thead>
+        <tr>
+            <th>{% trans "Index" %}</th>
+            {% for i in indices %}
+            <td>
+                {% if Constants.application_framing %}
+                {% trans "S" %}
+                {% else %}
+                {% trans "S" %}
+                {% endif %}
+                <sub>{{ i }}</sub>
+            </td>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+            {% for type, valuations in valuations_others %}
+            <tr>
+                <th>{% trans "Potential Payoff<br/>for" %} {{ type }}</th>
+                {% for v in valuations %}
+                <td>{{ v|c }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<br/>
+{% endif %}
 
 <br/>
 {% if Constants.confirm_button %}
 <div>
-    <button id="button" class="btn btn-primary btn-large"  type="button" onclick="showhide()">Next</button>
+    <button id="button" class="btn btn-primary btn-large"  type="button" onclick="showhide()">次へ</button>
 
     <br/><br/>
 
     <div id="confirm_next" style="display: none">
-        {% trans "この入力内容でよろしいですか？" %}
+        {% trans "この入力内容でよろしいですか？" %}
 
         <br/><br/>
 

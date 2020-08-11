@@ -30,10 +30,10 @@ SESSION_CONFIGS = [
         app_sequence=['survey', 'payment_info'],
     ),
     dict(
-        name='bos',
-        display_name='bos',
-        num_demo_participants=6,
-        app_sequence=['bos'],
+        name='bos_new',
+        display_name='bos_new',
+        num_demo_participants=5,
+        app_sequence=['bos_new'],
     )
 ]
 

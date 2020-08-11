@@ -21,7 +21,7 @@
 {# ============================================================================================= #}
 {% block title %}
 
-    {% trans "希望調査（ボストン方式・意向調査無し）" %}
+    {% trans "希望調査（ボストン方式・意向調査あり）" %}
 
 {% endblock %}
 
@@ -96,6 +96,18 @@
             {% endfor %}
         </tr>
         {% endif %}
+        <tr>
+            <th>{% trans "あなたの意向:" %}</th>
+            {% for i in player_intents %}
+            <td>{{ i }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>{% trans "意向調査で１位とした人数:" %}</th>
+            {% for i in first_choices %}
+            <td>{{ i }} 人</td>
+            {% endfor %}
+        </tr>
         <tr>
             <th>{% trans "あなたの希望" %}</th>
             {% for i in form_fields %}
