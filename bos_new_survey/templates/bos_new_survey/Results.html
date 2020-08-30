@@ -11,7 +11,7 @@
 {# ============================================================================================= #}
 {% block styles %}
 
-    <link href="{% static 'bos/css/style.css' %}" rel="stylesheet"/>
+    <link href="{% static 'bos_new_survey/css/style.css' %}" rel="stylesheet"/>
 
 {% endblock %}
 
@@ -53,17 +53,6 @@
             <td>{{ i|c }}</td>
             {% endfor %}
         </tr>
-        <tr>
-            <th>{% trans "あなたの意向:" %}</th>
-            {% for i in player_intents %}
-            <td>{{ i }}</td>
-            {% endfor %}
-        </tr>
-        <th>{% trans "意向調査で１位とした人数:" %}</th>
-            {% for i in first_choices %}
-            <td>{{ i }} 人</td>
-            {% endfor %}
-        </<tr>
         <tr>
             <th>{% trans "あなたの希望先:" %}</th>
             {% for i in player_prefs %}

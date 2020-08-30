@@ -144,5 +144,5 @@ class Constants(BaseConstants):
 
     nr_types = len(valuations)
 
-    name_in_url = "bos"
+    name_in_url = "bos_new_survey"
     num_rounds = 1
