@@ -205,7 +205,7 @@ class Subsession(BaseSubsession):
                               p.participant.vars['successful']])
 
         print('Saving data in output_session_my_survey_bos.csv')
-        with open("./my_survey_bos/static/output_session_my_survey_bos.csv", "a", encoding='shift_jis') as fp1:
+        with open("./bos_new_survey/static/output_session_bos_new_survey.csv", "a", encoding='shift_jis') as fp1:
             wr1 = csv.writer(fp1)
             for p in players:
                 wr1.writerow([date_now,
