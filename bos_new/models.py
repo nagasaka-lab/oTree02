@@ -5,12 +5,12 @@ from otree.api import (
 from itertools import chain
 import random
 from math import floor
-from bos.user_settings import *
+from bos_new.user_settings import *
 
 author = 'Benjamin Pichl'
 
 doc = """
-This app is intended to model a school choice problem. It implements the Boston School Choice Mechanism within the 
+This app is intended to model a school choice problem. It implements the Boston School Choice Mechanism within the
 oTree framework. If you have any questions, comments, feature requests, or bug reports, please write me an eMail:
 benjamin.pichl@outlook.com.
 
