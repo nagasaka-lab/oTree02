@@ -1,11 +1,15 @@
 # coding=utf-8
 from otree.api import (
-    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
+    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,Currency as c,
+    currency_range,
 )
 from itertools import chain
 import random
 from math import floor
 from bos_new.user_settings import *
+from otree.models import Participant
+import csv
+import datetime
 
 author = 'Benjamin Pichl'
 
@@ -21,7 +25,41 @@ t.b.d.
 """
 
 
+
 class Subsession(BaseSubsession):
+    def save_results(self):
+        players = self.get_players()
+        date_now = datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S")
+        session_name = 'bos_new'
+        for p in players:
+            print('print_survey',
+                  session_name,
+                  p.session.code,
+                  p.participant.code,
+                  p.participant.label,
+                  p.participant_id,
+                  p.id_in_subsession,
+                  p.id_in_group,
+                  p.group.id_in_subsession,
+                  p.age,
+                  p.gender)
+
+        print('Saving data in output_session.csv')
+        with open("output_session.csv", "a", encoding='shift_jis') as fp0:
+            wr0 = csv.writer(fp0)
+            for p in players:
+                wr0.writerow([date_now,
+                              session_name,
+                              p.session.code,
+                              p.participant.code,
+                              p.participant.label,
+                              p.participant_id,
+                              p.id_in_subsession,
+                              p.id_in_group,
+                              p.group.id_in_subsession,
+                              p.age,
+                              p.gender])
+
 
     # METHOD: =================================================================================== #
     # THINGS TO DO BEFORE THE SESSION STARTS  =================================================== #
@@ -174,6 +212,14 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    age = models.IntegerField(
+        label='年齢：',
+        min=13, max=80)
+
+    gender = models.StringField(
+        choices=[['男性', '男性'], ['女性', '女性']],
+        label='性別：',
+        widget=widgets.RadioSelect)
 
     # METHOD: =================================================================================== #
     # DEFINE ROLES ACCORDING TO INPUT IN USER_SETTINGS.PY ======================================= #
