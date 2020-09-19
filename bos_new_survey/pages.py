@@ -132,7 +132,8 @@ class Decision(Page):
         return {
                 'form_fields': form_fields, # initialize 'successful' agai
                 'player_intents':player_intents,
-                'form_fields': form_fields
+                'form_fields': form_fields,
+                'first_choices': first_choices,
                 }
 
     # METHOD: =================================================================================== #
