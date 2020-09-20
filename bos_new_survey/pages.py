@@ -19,6 +19,20 @@ def vars_for_all_templates(self):
         'priorities': self.participant.vars['priorities']
     }
 
+class MyPage(Page):
+    form_model = 'player'
+    form_fields = ['age',
+                   'gender']
+
+class DataSaveWaitPage(WaitPage):
+    wait_for_all_groups = True
+
+    def after_all_players_arrive(self):
+        self.subsession.save_results()
+
+
+class Results(Page):
+    pass
 
 class Instructions(Page):
     pass
@@ -212,6 +226,7 @@ class Thanks(Page):
 
 
 page_sequence = [
+    MyPage,
     ShuffleWaitPage,
     Survey,
     SurveyWaitPage,
@@ -225,14 +240,14 @@ page_sequence = [
 
 if Constants.application_framing:
     if Constants.instructions:
-        page_sequence.insert(0, InstructionsFramed)
+        page_sequence.insert(0, MyPage)
 
     if Constants.results:
         page_sequence.insert(-1, Results)
 
 else:
     if Constants.instructions:
-        page_sequence.insert(0, Instructions)
+        page_sequence.insert(0, MyPage)
 
     if Constants.results:
         page_sequence.insert(-1, Results)

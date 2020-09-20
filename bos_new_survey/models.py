@@ -1,6 +1,7 @@
 # coding=utf-8
 from otree.api import (
-    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
+    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,Currency as c,
+    currency_range,
 )
 from itertools import chain
 import random
@@ -348,6 +349,14 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    age = models.IntegerField(
+        label='年齢：',
+        min=13, max=80)
+
+    gender = models.StringField(
+        choices=[['男性', '男性'], ['女性', '女性']],
+        label='性別：',
+        widget=widgets.RadioSelect)
 
     # METHOD: =================================================================================== #
     # DEFINE ROLES ACCORDING TO INPUT IN USER_SETTINGS.PY ======================================= #
