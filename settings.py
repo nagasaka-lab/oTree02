@@ -53,6 +53,9 @@ ROOMS = [
         participant_label_file='_rooms/econ101.txt',
     ),
     dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
+    dict(name='sc',
+         display_name='学校選択実験',
+         participant_label_file='_rooms/sc01.txt'),
 ]
 
 ADMIN_USERNAME = 'admin'
