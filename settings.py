@@ -4,6 +4,7 @@ from os import environ
 # in SESSION_CONFIGS, except those that explicitly override it.
 # the session config can be accessed from methods in your apps as self.session.config,
 # e.g. self.session.config['participation_fee']
+# just for testing 'pull request"
 
 SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=1.00, participation_fee=0.00, doc=""
@@ -52,6 +53,9 @@ ROOMS = [
         participant_label_file='_rooms/econ101.txt',
     ),
     dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
+    dict(name='sc',
+         display_name='学校選択実験',
+         participant_label_file='_rooms/sc01.txt'),
 ]
 
 ADMIN_USERNAME = 'admin'
