@@ -131,17 +131,3 @@ page_sequence = [
     ResultsWaitPage,
     Thanks,
 ]
-
-if Constants.application_framing:
-    if Constants.instructions:
-        page_sequence.insert(0, MyPage)
-
-    if Constants.results:
-        page_sequence.insert(-1, Results)
-
-else:
-    if Constants.instructions:
-        page_sequence.insert(0, MyPage)
-
-    if Constants.results:
-        page_sequence.insert(-1, Results)
