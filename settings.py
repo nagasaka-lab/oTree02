@@ -12,29 +12,29 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 
 SESSION_CONFIGS = [
-    dict(
-        name='public_goods',
-        display_name="Public Goods",
-        num_demo_participants=3,
-        app_sequence=['public_goods', 'payment_info'],
-    ),
-    dict(
-        name='guess_two_thirds',
-        display_name="Guess 2/3 of the Average",
-        num_demo_participants=3,
-        app_sequence=['guess_two_thirds', 'payment_info'],
-    ),
-    dict(
-        name='survey',
-        display_name='survey',
-        num_demo_participants=1,
-        app_sequence=['survey', 'payment_info'],
-    ),
+    # dict(
+    #     name='public_goods',
+    #     display_name="Public Goods",
+    #     num_demo_participants=3,
+    #     app_sequence=['public_goods', 'payment_info'],
+    # ),
+    # dict(
+    #     name='guess_two_thirds',
+    #     display_name="Guess 2/3 of the Average",
+    #     num_demo_participants=3,
+    #     app_sequence=['guess_two_thirds', 'payment_info'],
+    # ),
+    # dict(
+    #     name='survey',
+    #     display_name='survey',
+    #     num_demo_participants=1,
+    #     app_sequence=['survey', 'payment_info'],
+    # ),
     dict(
         name='bos_new',
         display_name='bos_new',
         num_demo_participants=5,
-        app_sequence=['bos_new'],
+        app_sequence=['bos_new', 'survey', 'payment_info'],
     )
 ]
 
@@ -47,12 +47,12 @@ REAL_WORLD_CURRENCY_CODE = 'JRY'
 USE_POINTS = True
 
 ROOMS = [
-    dict(
-        name='econ101',
-        display_name='Econ 101 class',
-        participant_label_file='_rooms/econ101.txt',
-    ),
-    dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
+    # dict(
+    #     name='econ101',
+    #     display_name='Econ 101 class',
+    #     participant_label_file='_rooms/econ101.txt',
+    # ),
+    # dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
     dict(name='sc',
          display_name='学校選択実験',
          participant_label_file='_rooms/sc01.txt'),
